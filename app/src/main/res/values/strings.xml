@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">KtCoroutine</string>
+
+    <string name="sign_in_account_hint">Account</string>
+    <string name="sign_in_go">Go</string>
+    <string name="sign_in_greeting">Hello, %s</string>
+
 </resources>
