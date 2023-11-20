@@ -4,4 +4,6 @@ class ApiHelper(private val apiService: ApiService) {
 
     suspend fun getFollowerList(account: String) = apiService.getFollowerList(account)
 
+    suspend fun getProfile(account: String) = apiService.getProfile(account)
+
 }

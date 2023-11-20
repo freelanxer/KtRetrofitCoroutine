@@ -5,4 +5,8 @@
     <string name="sign_in_go">Go</string>
     <string name="sign_in_greeting">Hello, %s</string>
 
+    <string name="profile_posts">Post</string>
+    <string name="profile_fans">Fans</string>
+    <string name="profile_follows">Follower</string>
+
 </resources>

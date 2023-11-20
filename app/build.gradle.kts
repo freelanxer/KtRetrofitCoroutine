@@ -59,4 +59,6 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
     // Layout
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+    // Glide
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
 }
