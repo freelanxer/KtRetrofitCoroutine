@@ -30,18 +30,10 @@
             android:id="@+id/state_view"
             layout="@layout/inc_profile_state"/>
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swiper_layout"
+        <FrameLayout
+            android:id="@+id/profile_fl"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/profile_list_rv"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+            android:layout_height="match_parent"/>
 
     </LinearLayout>
 

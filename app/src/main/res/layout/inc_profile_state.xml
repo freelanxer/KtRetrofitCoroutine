@@ -4,9 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.graphics.Typeface"/>
         <variable
             name="profile"
             type="com.freelanxer.ktretrofitcoroutine.model.ProfileModel" />
+        <variable
+            name="postSelected"
+            type="Boolean" />
+        <variable
+            name="fansSelected"
+            type="Boolean" />
+        <variable
+            name="followerSelected"
+            type="Boolean" />
     </data>
 
     <LinearLayout
@@ -28,17 +38,20 @@
 
         <!--Post-->
         <LinearLayout
+            android:id="@+id/post_ll"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_gravity="center"
             android:layout_marginStart="20dp"
+            android:clickable="true"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                app:isBold="@{postSelected}"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_x_large"
                 android:text="@{String.valueOf(profile.photoCount)}"
@@ -48,6 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                app:isBold="@{postSelected}"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_large"
                 android:text="@string/profile_posts"/>
@@ -56,16 +70,19 @@
 
         <!--Fans-->
         <LinearLayout
+            android:id="@+id/fans_ll"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_gravity="center"
+            android:clickable="true"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                app:isBold="@{fansSelected}"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_x_large"
                 android:text="@{String.valueOf(profile.fansCount)}"
@@ -75,6 +92,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                app:isBold="@{fansSelected}"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_large"
                 android:text="@string/profile_fans"/>
@@ -83,16 +101,19 @@
 
         <!--Follower-->
         <LinearLayout
+            android:id="@+id/follower_ll"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_gravity="center"
+            android:clickable="true"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                app:isBold="@{followerSelected}"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_x_large"
                 android:text="@{String.valueOf(profile.followCount)}"
@@ -102,6 +123,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                app:isBold="@{followerSelected}"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_large"
                 android:text="@string/profile_follows"/>
