@@ -12,7 +12,7 @@ import com.freelanxer.ktretrofitcoroutine.model.post.PostModel
 class PostGridAdapter: RecyclerView.Adapter<PostGridAdapter.ViewHolder>() {
     private var mData: List<PostModel>? = null
 
-    fun setData(list: List<PostModel>) {
+    fun setData(list: List<PostModel>?) {
         mData = list
         notifyDataSetChanged()
     }

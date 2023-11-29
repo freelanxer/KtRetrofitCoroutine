@@ -4,13 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.freelanxer.ktretrofitcoroutine.adapter.post.PostGridAdapter
 import com.freelanxer.ktretrofitcoroutine.databinding.FragmentPostBinding
-import com.freelanxer.ktretrofitcoroutine.model.post.PostModel
+import com.freelanxer.ktretrofitcoroutine.network.ApiHelper
+import com.freelanxer.ktretrofitcoroutine.network.RetrofitBuilder
+import com.freelanxer.ktretrofitcoroutine.viewmodel.PostGridVM
+import com.freelanxer.ktretrofitcoroutine.viewmodel.PostVMFactory
 
 class PostFragment: BaseFragment() {
     private lateinit var mBinding: FragmentPostBinding
+    private lateinit var mPostVM: PostGridVM
     private val mPostAdapter: PostGridAdapter by lazy {
         PostGridAdapter()
     }
@@ -27,7 +32,16 @@ class PostFragment: BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        createPost()
+        mPostVM = ViewModelProvider(this,
+            PostVMFactory(ApiHelper(RetrofitBuilder.apiService)))[PostGridVM::class.java]
+
+        mPostVM.postListModel.observe(this) {
+            val model = it?.value
+            val postList = model?.postList
+            mPostAdapter.setData(postList)
+        }
+
+        getPostList()
     }
 
     override fun onCreateView(
@@ -41,24 +55,16 @@ class PostFragment: BaseFragment() {
         mBinding.postGridRv.setHasFixedSize(true)
         mBinding.postGridRv.layoutManager = GridLayoutManager(mBaseActivity, 3)
         mBinding.postGridRv.adapter = mPostAdapter
+        mBinding.swipeLayout.setOnRefreshListener {
+            getPostList()
+            mBinding.swipeLayout.isRefreshing = false
+        }
 
         return mBinding.root
     }
 
-    private fun createPost() {
-        val postList = mutableListOf<PostModel>()
-        for (i in 0..10) {
-            val post = PostModel(
-                "Id_$i",
-                "this is caption",
-                "https://www.kkday.com/zh-tw/blog/wp-content/uploads/batch_Fotolia_76642429_Subscription_Yearly_M-2.jpg",
-                5,
-                "20230506",
-                4
-            )
-            postList.add(post)
-        }
-        mPostAdapter.setData(postList)
+    private fun getPostList() {
+        mPostVM.getPostList(this, "");
     }
 
     override fun onClick(view: View?) {

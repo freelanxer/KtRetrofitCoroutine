@@ -22,7 +22,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:setPostThumb="@{post.photoURL}"/>
+            app:setPostThumb="@{post.photoUrl}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
